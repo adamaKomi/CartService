@@ -65,7 +65,9 @@ L'application démarre par défaut sur `http://localhost:5000` (ou le port configu
 ## Endpoints API
 
 ### Base URL
-`http://localhost:5000` (en développement)
+`https://cartservice.wittydune-edc9f6e7.francecentral.azurecontainerapps.io` (production)
+
+En développement : `http://localhost:5000`
 
 ### 1. Health Check
 - **Endpoint** : `GET /health`
@@ -182,10 +184,12 @@ L'API retourne des codes HTTP standard :
 ### Configuration de la collection
 
 1. Importer la collection `tests/Production.postman_collection.json`
-2. Définir les variables :
-   - `baseURL` : `http://localhost:5000`
+2. La collection est pré-configurée pour l'environnement de production avec l'URL : `https://cartservice.wittydune-edc9f6e7.francecentral.azurecontainerapps.io`
+3. Pour les tests en développement local, modifier la variable `baseURL` vers `http://localhost:5000`
+4. Définir les autres variables :
    - `userId` : `user1` (ou tout identifiant utilisateur)
    - `productId` : `P01` (ou ID de produit)
+   - `newQuantity` : `5`
 
 ### Scénario de test complet
 
