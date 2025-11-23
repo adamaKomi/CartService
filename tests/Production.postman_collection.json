@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "2fcd50b5-8660-4d34-82e6-e7f221150b7c",
+		"name": "CartService - API Tests",
+		"description": "Collection complète pour tester l'API CartService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41843691",
+		"_collection_link": "https://platform-api-team-8407.postman.co/workspace/ASP.NET---CartService~403421ad-3c4d-445f-9db9-ac33ebf56dcf/collection/41843691-2fcd50b5-8660-4d34-82e6-e7f221150b7c?action=share&source=collection_link&creator=41843691"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/health",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"health"
+					]
+				},
+				"description": "Vérifie que le service CartService fonctionne correctement"
+			},
+			"response": []
+		},
+		{
+			"name": "Ajouter un article au panier",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"productId\": \"{{productId}}\",\n  \"productName\": \"Clavier mécanique\",\n  \"quantity\": 1,\n  \"price\": 350.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}"
+					]
+				},
+				"description": "Ajoute un nouvel article au panier de l'utilisateur"
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer le panier complet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}"
+					]
+				},
+				"description": "Récupère tous les articles du panier avec le total"
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer un article spécifique",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}/{{productId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}",
+						"{{productId}}"
+					]
+				},
+				"description": "Récupère un article spécifique du panier"
+			},
+			"response": []
+		},
+		{
+			"name": "Augmenter la quantité d'un article",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}/{{productId}}/increase",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}",
+						"{{productId}}",
+						"increase"
+					]
+				},
+				"description": "Augmente la quantité de l'article de 1"
+			},
+			"response": []
+		},
+		{
+			"name": "Diminuer la quantité d'un article",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}/{{productId}}/decrease",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}",
+						"{{productId}}",
+						"decrease"
+					]
+				},
+				"description": "Diminue la quantité de l'article de 1 (minimum 1)"
+			},
+			"response": []
+		},
+		{
+			"name": "Définir une nouvelle quantité",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}/{{productId}}/new-quantity/{{newQuantity}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}",
+						"{{productId}}",
+						"new-quantity",
+						"{{newQuantity}}"
+					]
+				},
+				"description": "Définit une nouvelle quantité pour l'article"
+			},
+			"response": []
+		},
+		{
+			"name": "Supprimer un article du panier",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}/{{productId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}",
+						"{{productId}}"
+					]
+				},
+				"description": "Supprime un article spécifique du panier"
+			},
+			"response": []
+		},
+		{
+			"name": "Vider le panier complet",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/{{userId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"{{userId}}"
+					]
+				},
+				"description": "Supprime complètement le panier de l'utilisateur"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "user1",
+			"type": "string"
+		},
+		{
+			"key": "productId",
+			"value": "P01",
+			"type": "string"
+		},
+		{
+			"key": "newQuantity",
+			"value": "5",
+			"type": "string"
+		},
+		{
+			"key": "cartserviceProductionURL",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/refs/heads/main/schemas/v1.0/azure.yaml.json
+
+name: CartService
+
+services:
+  cartservice:
+    project: .
+    language: dotnet
+    host: containerapp
+    docker:
+      path: ./Dockerfile
+      context: .
+      registry: azcripgl3dcmujdou.azurecr.io
+
+
+infrastructure:
+  provider: bicep
+  path: infra
+  module: main
