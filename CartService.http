@@ -9,5 +9,11 @@ GET {{CartService_HostAddress}}/
 
 ###
 
-POST {{CartService_HostAddress}}/api/cart/1
-
+POST {{CartService_HostAddress}}/api/cart/user1
+Content-Type: application/json
+{
+  "productId": "P07",
+  "productName": "Orange",
+  "quantity": 3,
+  "price": 120
+}
